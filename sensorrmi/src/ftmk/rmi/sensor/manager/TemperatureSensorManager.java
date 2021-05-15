@@ -2,6 +2,7 @@ package ftmk.rmi.sensor.manager;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Collection;
 import java.util.HashMap;
 
 import ftmk.rmi.sensor.TemperatureSensor;
@@ -41,8 +42,26 @@ public class TemperatureSensorManager extends UnicastRemoteObject implements Tem
 		
 		happy.put("SATURDAY", 33);
 		
-		happy.put("SUDAY 33", 33);
+		happy.put("SUDAY ", 33);
+		
+		
 		return happy;
 	}
 
+	
+	public float getAverageTemprature() throws RemoteException {
+		
+	
+   
+		
+		float sum = 0.0f;
+		for (float f : getTemperature().values()) {
+		    sum += f;
+		}
+		
+		//Computing Average Temeprature
+	 float average=sum/7;
+	 
+	 return average;
+	}
 }
